@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Task Management App</h1>
+        
+        <!-- Add Task Form -->
+        <div id="task-input">
+            <h2>Enter Task</h2>
+            <form method="POST" action="/add">
+                <input type="text" name="task" placeholder="Enter task here..." required>
+                <input type="email" name="email" placeholder="Enter email for reminder..." required>
+                <input type="time" name="reminder_time">
+                <button type="submit">Add Task</button>
+            </form>
+        </div>
+
+        <!-- Task List -->
+        <div id="task-list">
+            <h2>Your Tasks</h2>
+            <ul id="tasks">
+                {% for task in tasks %}
+                    <li>
+                        {{ task }}
+                        <form method="POST" action="/delete">
+                            <input type="hidden" name="task" value="{{ task }}">
+                            <button type="submit">Delete</button>
+                        </form>
+                        <form method="POST" action="/update">
+                            <input type="hidden" name="old_task" value="{{ task }}">
+                            <input type="text" name="new_task" placeholder="New task name" required>
+                            <button type="submit">Update</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
