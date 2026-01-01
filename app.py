@@ -11,8 +11,8 @@ app = Flask(__name__)
 tasks = []
 reminders = {}
 
-sender_email = 'kinjalkharva47@gmail.com'  
-sender_password = 'xkhj erbt iwcb lfny' 
+sender_email = 'Your mail id'  
+sender_password = 'Your app password' 
 
 def send_email(to_email, subject, body):
     try:
@@ -81,4 +81,5 @@ def delete_task():
 
 if __name__ == '__main__':
     threading.Thread(target=schedule_reminders, daemon=True).start()
+
     app.run(debug=True)
