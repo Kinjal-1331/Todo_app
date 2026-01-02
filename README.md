@@ -1,4 +1,4 @@
-#Flask Todo List with Email Reminder
+Flask Todo List with Email Reminder
 
 This is a Flask-based Todo List web application that allows users to:
 
